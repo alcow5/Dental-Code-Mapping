@@ -3,6 +3,7 @@ import requests
 import json
 import re
 from config import *
+from prompts import get_prompt_for_model
 
 # Load CDT codes database
 @st.cache_data(ttl=0)  # Clear cache immediately
@@ -92,47 +93,16 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-def create_enhanced_system_message(cdt_codes):
-    """Create enhanced system message with actual CDT codes"""
-    codes_text = "\n".join([f"- {code['code']}: {code['description']}" for code in cdt_codes])
-    
-    enhanced_message = f"""You are a dental billing assistant with access to a comprehensive database of CDT (Current Dental Terminology) codes. Given a procedure summary, return the appropriate CDT codes and descriptions from the official CDT code set.
-
-Available CDT codes:
-{codes_text}
-
-Please format your response as JSON with the following structure:
-{{
-    "cdt_codes": [
-        {{
-            "code": "D0120",
-            "description": "Periodic oral evaluation - established patient",
-            "confidence": "high"
-        }}
-    ],
-    "explanation": "Brief explanation of why these codes were selected"
-}}
-
-Guidelines:
-1. Only use codes from the official CDT code set provided above
-2. Match the procedure description as closely as possible
-3. Consider the number of surfaces, tooth type, and material when applicable
-4. Set confidence as "high", "medium", or "low" based on how well the procedure matches
-5. If no exact match exists, provide the closest relevant code with "low" confidence
-6. Include multiple codes if the procedure involves multiple distinct services"""
-    
-    return enhanced_message
-
 def send_to_ollama(procedure_summary, cdt_codes):
     """Send procedure summary to Ollama API and return response, also return prompt"""
-    enhanced_system_message = create_enhanced_system_message(cdt_codes)
+    system_message = get_prompt_for_model(OLLAMA_MODEL, cdt_codes)
     
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [
             {
                 "role": "system",
-                "content": enhanced_system_message
+                "content": system_message
             },
             {
                 "role": "user",

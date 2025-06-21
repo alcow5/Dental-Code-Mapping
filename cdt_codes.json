@@ -430,5 +430,37 @@
   {
     "code": "D9946",
     "description": "Occlusal guard - hard appliance, partial arch"
+  },
+  {
+    "code": "D1510",
+    "description": "Space maintainer - fixed, unilateral"
+  },
+  {
+    "code": "D3220",
+    "description": "Therapeutic pulpotomy (excluding final restoration) - removal of pulp coronal to the dentinocemental junction and application of medicament"
+  },
+  {
+    "code": "D4240",
+    "description": "Gingival flap procedure, including root planing - one to three teeth per quadrant"
+  },
+  {
+    "code": "D4249",
+    "description": "Clinical crown lengthening - hard tissue"
+  },
+  {
+    "code": "D5820",
+    "description": "Interim partial denture (maxillary)"
+  },
+  {
+    "code": "D6065",
+    "description": "Implant supported porcelain/ceramic crown"
+  },
+  {
+    "code": "D6930",
+    "description": "Re-cement or re-bond fixed partial denture"
+  },
+  {
+    "code": "D7960",
+    "description": "Frenulectomy (frenectomy or frenotomy) - separate procedure"
   }
 ]

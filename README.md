@@ -11,7 +11,7 @@ A **HIPAA-compliant, locally-run AI tool** for mapping dental procedure summarie
 
 ## ✨ Features
 
-- **AI-Powered Code Mapping** - Uses Llama3:8b model for intelligent CDT code selection
+- **AI-Powered Code Mapping** - Uses Phi model for intelligent CDT code selection
 - **Comprehensive Database** - 102+ CDT codes covering all major dental procedures
 - **Confidence Scoring** - High/Medium/Low confidence levels for each code
 - **Multiple Display Formats** - JSON, raw text, or auto-detect
@@ -42,7 +42,7 @@ A **HIPAA-compliant, locally-run AI tool** for mapping dental procedure summarie
 
 1. **Python 3.8+**
 2. **Ollama** - [Install Ollama](https://ollama.ai/download)
-3. **Llama3:8b Model** - Download the model
+3. **Phi Model** - Download the model
 
 ### Installation
 
@@ -59,7 +59,7 @@ A **HIPAA-compliant, locally-run AI tool** for mapping dental procedure summarie
 
 3. **Install Ollama model:**
    ```bash
-   ollama pull llama3:8b
+   ollama pull phi:latest
    ```
 
 4. **Start Ollama:**
@@ -138,7 +138,7 @@ python test_setup.py
 
 - **Frontend:** Streamlit web interface
 - **Backend:** Python with Ollama API integration
-- **AI Model:** Llama3:8b (locally hosted)
+- **AI Model:** Phi model (locally hosted)
 - **Database:** JSON-based CDT code repository
 - **Configuration:** Centralized config management
 
@@ -159,7 +159,7 @@ cdt_code_mapper/
 
 ### Model Settings
 
-- **Model:** llama3:8b
+- **Model:** Phi model
 - **API Endpoint:** http://localhost:11434/api/chat
 - **Timeout:** 30 seconds
 - **Temperature:** Default (deterministic responses)
@@ -225,7 +225,7 @@ This tool is designed to assist dental professionals with CDT code selection but
    - Start Ollama: `ollama serve`
 
 2. **"Model not found"**
-   - Download model: `ollama pull llama3:8b`
+   - Download model: `ollama pull phi:latest`
    - Check available models: `ollama list`
 
 3. **"Streamlit not found"**

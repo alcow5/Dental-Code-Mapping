@@ -7,169 +7,30 @@ Tests the model's accuracy on specific dental procedures.
 import requests
 import json
 import time
-from config import OLLAMA_URL, OLLAMA_MODEL, SYSTEM_MESSAGE
+import sys
+from config import OLLAMA_URL, OLLAMA_MODEL
+from prompts import get_prompt_for_model
+from test_reference import TEST_CASES, get_test_cases_by_category, get_all_categories
 
-# Test cases with expected results
-TEST_CASES = [
-    {
-        "name": "Standard Adult Checkup + Cleaning",
-        "input": "Patient came in for a routine dental checkup. We did a full oral exam and a cleaning. No radiographs needed.",
-        "expected_codes": ["D0120", "D1110"],
-        "expected_descriptions": [
-            "Periodic oral evaluation - established patient",
-            "Prophylaxis - adult"
-        ]
-    },
-    {
-        "name": "Pediatric Sealants + Fluoride",
-        "input": "Applied fluoride varnish and sealants on molars for an 8-year-old patient during a preventive visit.",
-        "expected_codes": ["D1206", "D1351"],
-        "expected_descriptions": [
-            "Topical application of fluoride varnish",
-            "Sealant - per tooth"
-        ]
-    },
-    {
-        "name": "Bitewing X-rays and Composite Filling",
-        "input": "Patient had decay on the lower left molar. We took two bitewing X-rays and placed a composite restoration on one surface.",
-        "expected_codes": ["D0272", "D2391"],
-        "expected_descriptions": [
-            "Bitewings – two radiographic images",
-            "Resin-based composite – one surface, posterior"
-        ]
-    },
-    {
-        "name": "Root Canal – Premolar",
-        "input": "Completed root canal on upper premolar due to chronic pain. Patient was advised to return for crown placement.",
-        "expected_codes": ["D3320"],
-        "expected_descriptions": [
-            "Endodontic therapy, bicuspid tooth (excluding final restoration)"
-        ]
-    },
-    {
-        "name": "Tooth Extraction",
-        "input": "Extracted an erupted tooth with forceps under local anesthesia. Simple procedure.",
-        "expected_codes": ["D7140"],
-        "expected_descriptions": [
-            "Extraction, erupted tooth or exposed root (elevation and/or forceps removal)"
-        ]
-    },
-    {
-        "name": "Scaling and Root Planing (SRP)",
-        "input": "Patient diagnosed with periodontal disease. SRP performed on lower left quadrant affecting four teeth.",
-        "expected_codes": ["D4341"],
-        "expected_descriptions": [
-            "Periodontal scaling and root planing – four or more teeth per quadrant"
-        ]
-    },
-    {
-        "name": "Full Denture Delivery",
-        "input": "Delivered a complete upper denture to the patient after impressions were made last visit.",
-        "expected_codes": ["D5110"],
-        "expected_descriptions": [
-            "Complete denture – maxillary"
-        ]
-    },
-    {
-        "name": "Limited Emergency Exam",
-        "input": "Patient presented with severe toothache. Limited exam focused on the area of pain.",
-        "expected_codes": ["D0140"],
-        "expected_descriptions": [
-            "Limited oral evaluation – problem focused"
-        ]
-    },
-    {
-        "name": "Panoramic Radiograph for Assessment",
-        "input": "Took a panoramic X-ray to assess jaw and sinus structure prior to implant evaluation.",
-        "expected_codes": ["D0330"],
-        "expected_descriptions": [
-            "Panoramic radiographic image"
-        ]
-    },
-    {
-        "name": "Fluoride Treatment + Hygiene Instruction",
-        "input": "Applied fluoride varnish after cleaning. Reviewed brushing technique and flossing with the patient.",
-        "expected_codes": ["D1206", "D1330"],
-        "expected_descriptions": [
-            "Topical application of fluoride varnish",
-            "Oral hygiene instructions"
-        ]
-    },
-    {
-        "name": "Anterior Composite – Two Surfaces",
-        "input": "Placed composite restoration on two surfaces of tooth #8. Patient chipped the incisal edge and had decay interproximally.",
-        "expected_codes": ["D2331"],
-        "expected_descriptions": [
-            "Resin-based composite – two surfaces, anterior"
-        ]
-    },
-    {
-        "name": "Resin Crown Placement",
-        "input": "Delivered an indirect resin crown on lower right second premolar after prior root canal.",
-        "expected_codes": ["D2710"],
-        "expected_descriptions": [
-            "Crown – resin (indirect)"
-        ]
-    },
-    {
-        "name": "Incision and Drainage",
-        "input": "Patient presented with facial swelling and pain. Performed extraoral incision and drainage of abscess.",
-        "expected_codes": ["D7520"],
-        "expected_descriptions": [
-            "Incision and drainage of abscess – extraoral soft tissue"
-        ]
-    },
-    {
-        "name": "Full Mouth Debridement",
-        "input": "Heavy calculus present. Full mouth debridement performed to allow better diagnostic evaluation on next visit.",
-        "expected_codes": ["D4355"],
-        "expected_descriptions": [
-            "Full mouth debridement to enable a comprehensive periodontal evaluation and diagnosis on a subsequent visit"
-        ]
-    },
-    {
-        "name": "Stainless Steel Crown on Child",
-        "input": "Placed a preformed stainless steel crown on primary molar with deep decay.",
-        "expected_codes": ["D2930"],
-        "expected_descriptions": [
-            "Prefabricated stainless steel crown – primary tooth"
-        ]
-    },
-    {
-        "name": "Biteguard Delivery",
-        "input": "Delivered a hard full-arch nightguard for bruxism. Patient has history of grinding and TMJ discomfort.",
-        "expected_codes": ["D9944"],
-        "expected_descriptions": [
-            "Occlusal guard – hard appliance, full arch"
-        ]
-    },
-    {
-        "name": "Post and Core with Crown",
-        "input": "Placed a cast post and core on tooth #19, followed by porcelain fused to metal crown.",
-        "expected_codes": ["D2954", "D2750"],
-        "expected_descriptions": [
-            "Prefabricated post and core in addition to crown",
-            "Crown – porcelain fused to high noble metal"
-        ]
-    },
-    {
-        "name": "Emergency Palliative Treatment",
-        "input": "Provided palliative care for severe tooth pain, including temporary dressing and occlusal adjustment.",
-        "expected_codes": ["D9110"],
-        "expected_descriptions": [
-            "Palliative treatment of dental pain – per visit"
-        ]
-    }
-]
+def load_cdt_codes():
+    """Load CDT codes from JSON file"""
+    try:
+        with open('cdt_codes.json', 'r') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"Error loading CDT codes: {e}")
+        return []
 
 def send_test_to_ollama(test_input):
     """Send test input to Ollama and return response"""
+    cdt_codes = load_cdt_codes()
+    system_message = get_prompt_for_model(OLLAMA_MODEL, cdt_codes)
     payload = {
         "model": OLLAMA_MODEL,
         "messages": [
             {
                 "role": "system",
-                "content": SYSTEM_MESSAGE
+                "content": system_message
             },
             {
                 "role": "user",
@@ -224,18 +85,25 @@ def evaluate_test_case(test_case, model_response):
         "response_text": response_text[:200] + "..." if len(response_text) > 200 else response_text
     }
 
-def run_comprehensive_tests():
-    """Run all test cases and provide detailed results"""
-    print("🧪 Running Comprehensive CDT Code Mapper Tests")
+def run_comprehensive_tests(test_cases=None, category=None):
+    """Run test cases and provide detailed results"""
+    if test_cases is None:
+        test_cases = TEST_CASES
+    
+    if category:
+        print(f"🧪 Running CDT Code Mapper Tests - Category: {category.upper()}")
+    else:
+        print("🧪 Running Comprehensive CDT Code Mapper Tests")
+    
     print("=" * 60)
     print(f"Model: {OLLAMA_MODEL}")
-    print(f"Total test cases: {len(TEST_CASES)}")
+    print(f"Total test cases: {len(test_cases)}")
     print()
     
     results = []
     total_score = 0
     
-    for i, test_case in enumerate(TEST_CASES, 1):
+    for i, test_case in enumerate(test_cases, 1):
         print(f"📋 Test Case {i}: {test_case['name']}")
         print(f"   Input: {test_case['input']}")
         print(f"   Expected: {', '.join(test_case['expected_codes'])}")
@@ -277,16 +145,16 @@ def run_comprehensive_tests():
     print("\n📊 TEST SUMMARY")
     print("=" * 60)
     passed_tests = sum(1 for r in results if r["passed"])
-    overall_score = total_score / len(TEST_CASES)
+    overall_score = total_score / len(test_cases)
     
-    print(f"✅ Passed: {passed_tests}/{len(TEST_CASES)} tests")
+    print(f"✅ Passed: {passed_tests}/{len(test_cases)} tests")
     print(f"📈 Overall accuracy: {overall_score:.1%}")
     print(f"🎯 Average score per test: {overall_score:.1%}")
     
     # Detailed breakdown
     print("\n📋 DETAILED BREAKDOWN")
     print("-" * 60)
-    for i, (test_case, result) in enumerate(zip(TEST_CASES, results), 1):
+    for i, (test_case, result) in enumerate(zip(test_cases, results), 1):
         status = "✅ PASS" if result["passed"] else "❌ FAIL"
         print(f"{i:2d}. {status} {test_case['name']} ({result['score']:.1%})")
     
@@ -298,11 +166,32 @@ def run_comprehensive_tests():
     elif overall_score >= 0.6:
         print("👍 Good performance. Consider fine-tuning prompts for better accuracy.")
     elif overall_score >= 0.4:
-        print("⚠️  Moderate performance. Review system prompt and test cases.")
+        print("⚠️ Moderate performance. Significant improvements needed.")
     else:
         print("🚨 Poor performance. Significant improvements needed.")
     
-    return results
+    return results, overall_score
+
+def main():
+    """Main function to handle command line arguments"""
+    if len(sys.argv) > 1:
+        category = sys.argv[1].lower()
+        if category == "list":
+            print("Available test categories:")
+            for cat in get_all_categories():
+                test_cases = get_test_cases_by_category(cat)
+                print(f"  {cat}: {len(test_cases)} test cases")
+            return
+        elif category in get_all_categories():
+            test_cases = get_test_cases_by_category(category)
+            run_comprehensive_tests(test_cases, category)
+        else:
+            print(f"Unknown category: {category}")
+            print("Available categories:", ", ".join(get_all_categories()))
+            print("Use 'list' to see all categories with test case counts.")
+    else:
+        # Run all tests
+        run_comprehensive_tests()
 
 if __name__ == "__main__":
-    run_comprehensive_tests() 
+    main() 
