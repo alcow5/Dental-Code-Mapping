@@ -1,0 +1,434 @@
+[
+  {
+    "code": "D0120",
+    "description": "Periodic oral evaluation - established patient"
+  },
+  {
+    "code": "D0140",
+    "description": "Limited oral evaluation - problem focused"
+  },
+  {
+    "code": "D0145",
+    "description": "Oral evaluation for a patient under three years of age and counseling with primary caregiver"
+  },
+  {
+    "code": "D0150",
+    "description": "Comprehensive oral evaluation - new or established patient"
+  },
+  {
+    "code": "D0160",
+    "description": "Detailed and extensive oral evaluation - problem focused, by report"
+  },
+  {
+    "code": "D0210",
+    "description": "Intraoral - complete series of radiographic images"
+  },
+  {
+    "code": "D0272",
+    "description": "Bitewings - two radiographic images"
+  },
+  {
+    "code": "D0330",
+    "description": "Panoramic radiographic image"
+  },
+  {
+    "code": "D0388",
+    "description": "Intraoral tomosynthesis - bitewing radiographic image - image capture only"
+  },
+  {
+    "code": "D0389",
+    "description": "Intraoral tomosynthesis - periapical radiographic image - image capture only"
+  },
+  {
+    "code": "D0701",
+    "description": "Panoramic radiographic image - image capture only"
+  },
+  {
+    "code": "D0707",
+    "description": "Intraoral - periapical radiographic image - image capture only"
+  },
+  {
+    "code": "D0708",
+    "description": "Intraoral - bitewing radiographic image - image capture only"
+  },
+  {
+    "code": "D1110",
+    "description": "Prophylaxis - adult"
+  },
+  {
+    "code": "D1120",
+    "description": "Prophylaxis - child"
+  },
+  {
+    "code": "D1206",
+    "description": "Topical application of fluoride varnish"
+  },
+  {
+    "code": "D1330",
+    "description": "Oral hygiene instructions"
+  },
+  {
+    "code": "D1351",
+    "description": "Sealant - per tooth"
+  },
+  {
+    "code": "D1782",
+    "description": "Vaccine administration - human papillomavirus - Dose 2"
+  },
+  {
+    "code": "D1783",
+    "description": "Vaccine administration - human papillomavirus - Dose 3"
+  },
+  {
+    "code": "D2140",
+    "description": "Amalgam - one surface, primary or permanent"
+  },
+  {
+    "code": "D2150",
+    "description": "Amalgam - two surfaces, primary or permanent"
+  },
+  {
+    "code": "D2160",
+    "description": "Amalgam - three surfaces, primary or permanent"
+  },
+  {
+    "code": "D2330",
+    "description": "Resin-based composite - one surface, anterior"
+  },
+  {
+    "code": "D2331",
+    "description": "Resin-based composite - two surfaces, anterior"
+  },
+  {
+    "code": "D2332",
+    "description": "Resin-based composite - three surfaces, anterior"
+  },
+  {
+    "code": "D2335",
+    "description": "Resin-based composite - four or more surfaces or involving incisal angle (anterior)"
+  },
+  {
+    "code": "D2391",
+    "description": "Resin-based composite - one surface, posterior"
+  },
+  {
+    "code": "D2392",
+    "description": "Resin-based composite - two surfaces, posterior"
+  },
+  {
+    "code": "D2393",
+    "description": "Resin-based composite - three surfaces, posterior"
+  },
+  {
+    "code": "D2394",
+    "description": "Resin-based composite - four surfaces, posterior"
+  },
+  {
+    "code": "D2510",
+    "description": "Inlay - metallic - one surface"
+  },
+  {
+    "code": "D2520",
+    "description": "Inlay - metallic - two surfaces"
+  },
+  {
+    "code": "D2530",
+    "description": "Inlay - metallic - three surfaces"
+  },
+  {
+    "code": "D2542",
+    "description": "Onlay - metallic - two surfaces"
+  },
+  {
+    "code": "D2543",
+    "description": "Onlay - metallic - three surfaces"
+  },
+  {
+    "code": "D2544",
+    "description": "Onlay - metallic - four or more surfaces"
+  },
+  {
+    "code": "D2610",
+    "description": "Inlay - porcelain/ceramic - one surface"
+  },
+  {
+    "code": "D2620",
+    "description": "Inlay - porcelain/ceramic - two surfaces"
+  },
+  {
+    "code": "D2630",
+    "description": "Inlay - porcelain/ceramic - three or more surfaces"
+  },
+  {
+    "code": "D2642",
+    "description": "Onlay - porcelain/ceramic - two surfaces"
+  },
+  {
+    "code": "D2643",
+    "description": "Onlay - porcelain/ceramic - three surfaces"
+  },
+  {
+    "code": "D2644",
+    "description": "Onlay - porcelain/ceramic - four or more surfaces"
+  },
+  {
+    "code": "D2650",
+    "description": "Inlay - resin based composite - one surface"
+  },
+  {
+    "code": "D2651",
+    "description": "Inlay - resin based composite - two surfaces"
+  },
+  {
+    "code": "D2652",
+    "description": "Inlay - resin based composite - three or more surfaces"
+  },
+  {
+    "code": "D2662",
+    "description": "Onlay - resin based composite - two surfaces"
+  },
+  {
+    "code": "D2663",
+    "description": "Onlay - resin based composite - three surfaces"
+  },
+  {
+    "code": "D2664",
+    "description": "Onlay - resin based composite - four or more surfaces"
+  },
+  {
+    "code": "D2710",
+    "description": "Crown - resin (indirect)"
+  },
+  {
+    "code": "D2712",
+    "description": "Crown - 3/4 resin based composite (indirect)"
+  },
+  {
+    "code": "D2720",
+    "description": "Crown - resin with high noble metal"
+  },
+  {
+    "code": "D2721",
+    "description": "Crown - resin with predominantly base metal"
+  },
+  {
+    "code": "D2722",
+    "description": "Crown - resin with noble metal"
+  },
+  {
+    "code": "D2740",
+    "description": "Crown - porcelain/ceramic"
+  },
+  {
+    "code": "D2750",
+    "description": "Crown - porcelain fused to high noble metal"
+  },
+  {
+    "code": "D2751",
+    "description": "Crown - porcelain fused to predominantly base metal"
+  },
+  {
+    "code": "D2752",
+    "description": "Crown - porcelain fused to noble metal"
+  },
+  {
+    "code": "D2753",
+    "description": "Crown - porcelain fused to titanium and titanium alloys"
+  },
+  {
+    "code": "D2780",
+    "description": "Crown - 3/4 cast high noble metal"
+  },
+  {
+    "code": "D2781",
+    "description": "Crown - 3/4 cast predominantly base metal"
+  },
+  {
+    "code": "D2782",
+    "description": "Crown - 3/4 cast noble metal"
+  },
+  {
+    "code": "D2783",
+    "description": "Crown - 3/4 porcelain/ceramic"
+  },
+  {
+    "code": "D2790",
+    "description": "Crown - full cast high noble metal"
+  },
+  {
+    "code": "D2791",
+    "description": "Crown - full cast predominantly base metal"
+  },
+  {
+    "code": "D2792",
+    "description": "Crown - full cast noble metal"
+  },
+  {
+    "code": "D2794",
+    "description": "Crown - titanium"
+  },
+  {
+    "code": "D2940",
+    "description": "Protective restoration"
+  },
+  {
+    "code": "D2930",
+    "description": "Prefabricated stainless steel crown - primary tooth"
+  },
+  {
+    "code": "D2954",
+    "description": "Prefabricated post and core in addition to crown"
+  },
+  {
+    "code": "D3110",
+    "description": "Pulp cap - direct (excluding final restoration)"
+  },
+  {
+    "code": "D3120",
+    "description": "Pulp cap - indirect (excluding final restoration)"
+  },
+  {
+    "code": "D3330",
+    "description": "Endodontic therapy, molar tooth (excluding final restoration)"
+  },
+  {
+    "code": "D3320",
+    "description": "Endodontic therapy, bicuspid tooth (excluding final restoration)"
+  },
+  {
+    "code": "D3346",
+    "description": "Retreatment of previous root canal therapy - anterior"
+  },
+  {
+    "code": "D3347",
+    "description": "Retreatment of previous root canal therapy - premolar"
+  },
+  {
+    "code": "D3348",
+    "description": "Retreatment of previous root canal therapy - molar"
+  },
+  {
+    "code": "D4355",
+    "description": "Full mouth debridement to enable a comprehensive periodontal evaluation and diagnosis on a subsequent visit"
+  },
+  {
+    "code": "D4341",
+    "description": "Periodontal scaling and root planing - four or more teeth per quadrant"
+  },
+  {
+    "code": "D4910",
+    "description": "Periodontal maintenance"
+  },
+  {
+    "code": "D5110",
+    "description": "Complete denture - maxillary"
+  },
+  {
+    "code": "D5120",
+    "description": "Complete denture - mandibular"
+  },
+  {
+    "code": "D6056",
+    "description": "Prefabricated abutment - includes modification and placement"
+  },
+  {
+    "code": "D6057",
+    "description": "Custom fabricated abutment - includes placement"
+  },
+  {
+    "code": "D6059",
+    "description": "Abutment supported porcelain fused to metal crown (high noble metal)"
+  },
+  {
+    "code": "D6240",
+    "description": "Pontic - porcelain fused to high noble metal"
+  },
+  {
+    "code": "D6750",
+    "description": "Retainer crown - porcelain fused to high noble metal"
+  },
+  {
+    "code": "D6752",
+    "description": "Retainer crown - porcelain fused to noble metal"
+  },
+  {
+    "code": "D7111",
+    "description": "Extraction, coronal remnants - primary tooth"
+  },
+  {
+    "code": "D7140",
+    "description": "Extraction, erupted tooth or exposed root (elevation and/or forceps removal)"
+  },
+  {
+    "code": "D7210",
+    "description": "Extraction, erupted tooth or exposed root (elevation and/or forceps removal)"
+  },
+  {
+    "code": "D7220",
+    "description": "Removal of impacted tooth - soft tissue"
+  },
+  {
+    "code": "D7230",
+    "description": "Removal of impacted tooth - partially bony"
+  },
+  {
+    "code": "D7240",
+    "description": "Removal of impacted tooth - completely bony"
+  },
+  {
+    "code": "D7450",
+    "description": "Removal of benign odontogenic cyst or tumor - lesion diameter up to 1.25 cm"
+  },
+  {
+    "code": "D7520",
+    "description": "Incision and drainage of abscess - extraoral soft tissue"
+  },
+  {
+    "code": "D7530",
+    "description": "Removal of foreign body from mucosa, skin, or subcutaneous alveolar tissue"
+  },
+  {
+    "code": "D7865",
+    "description": "Arthroplasty"
+  },
+  {
+    "code": "D7870",
+    "description": "Arthrocentesis"
+  },
+  {
+    "code": "D7871",
+    "description": "Non-arthroscopic lysis and lavage of temporomandibular joint"
+  },
+  {
+    "code": "D7897",
+    "description": "Occlusal orthotic device, by report"
+  },
+  {
+    "code": "D9110",
+    "description": "Palliative treatment of dental pain - per visit"
+  },
+  {
+    "code": "D9230",
+    "description": "Inhalation of nitrous oxide/analgesia, anxiolysis"
+  },
+  {
+    "code": "D9910",
+    "description": "Application of desensitizing medicament"
+  },
+  {
+    "code": "D9944",
+    "description": "Occlusal guard - hard appliance, full arch"
+  },
+  {
+    "code": "D9945",
+    "description": "Occlusal guard - soft appliance, full arch"
+  },
+  {
+    "code": "D6969",
+    "description": "Test Code do not use"
+  },
+  {
+    "code": "D9946",
+    "description": "Occlusal guard - hard appliance, partial arch"
+  }
+]
