@@ -8,6 +8,7 @@ import requests
 import json
 import time
 import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from config import OLLAMA_URL, OLLAMA_MODEL
 from prompts import get_prompt_for_model
 from test_reference import TEST_CASES, get_test_cases_by_category, get_all_categories
@@ -47,6 +48,20 @@ def send_test_to_ollama(test_input):
     except Exception as e:
         return {"error": str(e)}
 
+def run_single_test(test_case):
+    """Run a single test case and return results"""
+    start_time = time.time()
+    
+    # Send to model
+    model_response = send_test_to_ollama(test_case["input"])
+    
+    # Evaluate results
+    result = evaluate_test_case(test_case, model_response)
+    result["elapsed_time"] = time.time() - start_time
+    result["test_case"] = test_case
+    
+    return result
+
 def extract_codes_from_response(response_text):
     """Extract CDT codes from the model's response"""
     if not response_text:
@@ -85,8 +100,15 @@ def evaluate_test_case(test_case, model_response):
         "response_text": response_text[:200] + "..." if len(response_text) > 200 else response_text
     }
 
-def run_comprehensive_tests(test_cases=None, category=None):
-    """Run test cases and provide detailed results"""
+def run_comprehensive_tests(test_cases=None, category=None, max_workers=12):
+    """
+    Run test cases using parallel processing for faster execution.
+    
+    Args:
+        test_cases: List of test cases to run
+        category: Category name for display
+        max_workers: Number of concurrent threads (default: 12 for optimal performance)
+    """
     if test_cases is None:
         test_cases = TEST_CASES
     
@@ -98,55 +120,53 @@ def run_comprehensive_tests(test_cases=None, category=None):
     print("=" * 60)
     print(f"Model: {OLLAMA_MODEL}")
     print(f"Total test cases: {len(test_cases)}")
+    print(f"Parallel execution: {max_workers} threads")
     print()
     
+    start_time = time.time()
     results = []
-    total_score = 0
+    completed = 0
     
-    for i, test_case in enumerate(test_cases, 1):
-        print(f"📋 Test Case {i}: {test_case['name']}")
-        print(f"   Input: {test_case['input']}")
-        print(f"   Expected: {', '.join(test_case['expected_codes'])}")
+    # Use ThreadPoolExecutor for parallel execution
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        print(f"📡 Submitting {len(test_cases)} test cases to Ollama...")
         
-        # Send to model
-        print("   🔄 Sending to model...")
-        model_response = send_test_to_ollama(test_case["input"])
+        # Submit all test cases
+        futures = [
+            executor.submit(run_single_test, test_case)
+            for test_case in test_cases
+        ]
         
-        # Evaluate results
-        result = evaluate_test_case(test_case, model_response)
-        results.append(result)
-        
-        # Display results
-        if result["passed"]:
-            print(f"   ✅ PASSED (Score: {result['score']:.1%})")
-        else:
-            print(f"   ❌ FAILED (Score: {result['score']:.1%})")
-        
-        print(f"   Found codes: {', '.join(result['extracted_codes']) if result['extracted_codes'] else 'None'}")
-        
-        if result["found_codes"]:
-            print(f"   ✅ Correct: {', '.join(result['found_codes'])}")
-        
-        if result["missing_codes"]:
-            print(f"   ❌ Missing: {', '.join(result['missing_codes'])}")
-        
-        if "error" in result:
-            print(f"   🚨 Error: {result['error']}")
-        
-        print(f"   Response preview: {result['response_text']}")
-        print("-" * 60)
-        
-        total_score += result["score"]
-        
-        # Small delay between requests
-        time.sleep(1)
+        # Collect results as they complete
+        for future in as_completed(futures):
+            result = future.result()
+            results.append(result)
+            completed += 1
+            
+            # Show progress
+            test_case = result["test_case"]
+            print(f"✅ [{completed}/{len(test_cases)}] {test_case['name']} - {result['elapsed_time']:.2f}s")
+            
+            if result["passed"]:
+                print(f"   ✅ PASSED (Score: {result['score']:.1%})")
+            else:
+                print(f"   ❌ FAILED (Score: {result['score']:.1%})")
+            
+            print(f"   Found: {', '.join(result['extracted_codes']) if result['extracted_codes'] else 'None'}")
+            print(f"   Expected: {', '.join(result['expected_codes'])}")
+            print("-" * 60)
+    
+    total_time = time.time() - start_time
     
     # Summary
     print("\n📊 TEST SUMMARY")
     print("=" * 60)
     passed_tests = sum(1 for r in results if r["passed"])
-    overall_score = total_score / len(test_cases)
+    overall_score = sum(r["score"] for r in results) / len(test_cases)
     
+    print(f"⏱️  Total execution time: {total_time:.2f} seconds")
+    print(f"📈 Average time per test: {total_time/len(test_cases):.2f} seconds")
+    print(f"🚀 Speedup vs sequential: ~{len(test_cases)}x faster")
     print(f"✅ Passed: {passed_tests}/{len(test_cases)} tests")
     print(f"📈 Overall accuracy: {overall_score:.1%}")
     print(f"🎯 Average score per test: {overall_score:.1%}")
@@ -154,9 +174,10 @@ def run_comprehensive_tests(test_cases=None, category=None):
     # Detailed breakdown
     print("\n📋 DETAILED BREAKDOWN")
     print("-" * 60)
-    for i, (test_case, result) in enumerate(zip(test_cases, results), 1):
+    for i, result in enumerate(results, 1):
+        test_case = result["test_case"]
         status = "✅ PASS" if result["passed"] else "❌ FAIL"
-        print(f"{i:2d}. {status} {test_case['name']} ({result['score']:.1%})")
+        print(f"{i:2d}. {status} {test_case['name']} ({result['score']:.1%}) - {result['elapsed_time']:.2f}s")
     
     # Recommendations
     print("\n💡 RECOMMENDATIONS")

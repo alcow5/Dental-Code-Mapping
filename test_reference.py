@@ -232,6 +232,71 @@ TEST_CASES = [
         "expected_descriptions": [
             "Space maintainer - fixed, unilateral"
         ]
+    },
+    # Additional new test cases
+    {
+        "name": "Complete Oral Evaluation for New Patient",
+        "input": "New patient visit. We completed a comprehensive oral evaluation including medical history and charting.",
+        "expected_codes": ["D0150"],
+        "expected_descriptions": [
+            "Comprehensive oral evaluation - new or established patient"
+        ]
+    },
+    {
+        "name": "Topical Anesthesia with Debridement",
+        "input": "Applied topical anesthesia and performed full mouth debridement due to heavy calculus and bleeding.",
+        "expected_codes": ["D4355"],
+        "expected_descriptions": [
+            "Full mouth debridement to enable a comprehensive periodontal evaluation and diagnosis on a subsequent visit"
+        ]
+    },
+    {
+        "name": "Porcelain Crown on Posterior Tooth",
+        "input": "Placed an all-ceramic crown on upper right second molar to restore fractured tooth.",
+        "expected_codes": ["D2740"],
+        "expected_descriptions": [
+            "Crown - porcelain/ceramic"
+        ]
+    },
+    {
+        "name": "Pulpectomy on Primary Tooth",
+        "input": "Performed pulpectomy on primary anterior tooth due to non-vital pulp and abscess.",
+        "expected_codes": ["D3240"],
+        "expected_descriptions": [
+            "Pulpal therapy (resorbable filling) - anterior, primary tooth (excluding final restoration)"
+        ]
+    },
+    {
+        "name": "Re-cement Crown",
+        "input": "Re-cemented full cast crown on premolar after it became dislodged.",
+        "expected_codes": ["D2920"],
+        "expected_descriptions": [
+            "Re-cement or re-bond crown"
+        ]
+    },
+    {
+        "name": "Apicoectomy with Root End Filling",
+        "input": "Performed apicoectomy and placed root end filling on anterior tooth due to persistent infection.",
+        "expected_codes": ["D3410"],
+        "expected_descriptions": [
+            "Apicoectomy - anterior"
+        ]
+    },
+    {
+        "name": "Tooth Desensitization",
+        "input": "Applied desensitizing medicament to cervical areas of multiple teeth due to hypersensitivity.",
+        "expected_codes": ["D9910"],
+        "expected_descriptions": [
+            "Application of desensitizing medicament"
+        ]
+    },
+    {
+        "name": "Occlusal Adjustment Post-Treatment",
+        "input": "Performed occlusal adjustment on posterior teeth after restorative treatment to improve comfort.",
+        "expected_codes": ["D9951"],
+        "expected_descriptions": [
+            "Occlusal adjustment - limited"
+        ]
     }
 ]
 

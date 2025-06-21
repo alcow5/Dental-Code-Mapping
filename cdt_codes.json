@@ -462,5 +462,21 @@
   {
     "code": "D7960",
     "description": "Frenulectomy (frenectomy or frenotomy) - separate procedure"
+  },
+  {
+    "code": "D2920",
+    "description": "Re-cement or re-bond crown"
+  },
+  {
+    "code": "D3240",
+    "description": "Pulpal therapy (resorbable filling) - anterior, primary tooth (excluding final restoration)"
+  },
+  {
+    "code": "D3410",
+    "description": "Apicoectomy - anterior"
+  },
+  {
+    "code": "D9951",
+    "description": "Occlusal adjustment - limited"
   }
 ]

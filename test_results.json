@@ -1,0 +1,337 @@
+{
+  "last_updated": "2025-06-21T12:50:51.691295",
+  "model": "llama3:8b",
+  "test_cases": {
+    "Standard Adult Checkup + Cleaning": {
+      "accuracy_passed": true,
+      "consistency_passed": false,
+      "last_accuracy_test": "2025-06-21T12:50:51.690895",
+      "last_consistency_test": "2025-06-21T12:50:51.690915",
+      "accuracy_score": 1.0,
+      "consistency_rate": 0.0,
+      "needs_work": true
+    },
+    "Pediatric Sealants + Fluoride": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.690928",
+      "last_consistency_test": "2025-06-21T12:50:51.690929",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Bitewing X-rays and Composite Filling": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.690939",
+      "last_consistency_test": "2025-06-21T12:50:51.690940",
+      "accuracy_score": 0.5,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Root Canal \u2013 Premolar": {
+      "accuracy_passed": true,
+      "consistency_passed": false,
+      "last_accuracy_test": "2025-06-21T12:50:51.690948",
+      "last_consistency_test": "2025-06-21T12:50:51.690948",
+      "accuracy_score": 1.0,
+      "consistency_rate": 0.0,
+      "needs_work": true
+    },
+    "Tooth Extraction": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.690956",
+      "last_consistency_test": "2025-06-21T12:50:51.690957",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Scaling and Root Planing (SRP)": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.690965",
+      "last_consistency_test": "2025-06-21T12:50:51.690965",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Full Denture Delivery": {
+      "accuracy_passed": false,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.690973",
+      "last_consistency_test": "2025-06-21T12:50:51.690973",
+      "accuracy_score": 0.0,
+      "consistency_rate": 1.0,
+      "needs_work": true
+    },
+    "Limited Emergency Exam": {
+      "accuracy_passed": false,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.690981",
+      "last_consistency_test": "2025-06-21T12:50:51.690981",
+      "accuracy_score": 0.0,
+      "consistency_rate": 1.0,
+      "needs_work": true
+    },
+    "Panoramic Radiograph for Assessment": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.690988",
+      "last_consistency_test": "2025-06-21T12:50:51.690989",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Fluoride Treatment + Hygiene Instruction": {
+      "accuracy_passed": false,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.690997",
+      "last_consistency_test": "2025-06-21T12:50:51.690997",
+      "accuracy_score": 0.0,
+      "consistency_rate": 1.0,
+      "needs_work": true
+    },
+    "Anterior Composite \u2013 Two Surfaces": {
+      "accuracy_passed": true,
+      "consistency_passed": false,
+      "last_accuracy_test": "2025-06-21T12:50:51.691005",
+      "last_consistency_test": "2025-06-21T12:50:51.691005",
+      "accuracy_score": 0.5,
+      "consistency_rate": 0.0,
+      "needs_work": true
+    },
+    "Resin Crown Placement": {
+      "accuracy_passed": true,
+      "consistency_passed": false,
+      "last_accuracy_test": "2025-06-21T12:50:51.691088",
+      "last_consistency_test": "2025-06-21T12:50:51.691089",
+      "accuracy_score": 1.0,
+      "consistency_rate": 0.0,
+      "needs_work": true
+    },
+    "Incision and Drainage": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691096",
+      "last_consistency_test": "2025-06-21T12:50:51.691097",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Full Mouth Debridement": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691104",
+      "last_consistency_test": "2025-06-21T12:50:51.691105",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Stainless Steel Crown on Child": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691112",
+      "last_consistency_test": "2025-06-21T12:50:51.691113",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Biteguard Delivery": {
+      "accuracy_passed": false,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691120",
+      "last_consistency_test": "2025-06-21T12:50:51.691120",
+      "accuracy_score": 0.0,
+      "consistency_rate": 1.0,
+      "needs_work": true
+    },
+    "Post and Core with Crown": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691128",
+      "last_consistency_test": "2025-06-21T12:50:51.691129",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Emergency Palliative Treatment": {
+      "accuracy_passed": true,
+      "consistency_passed": false,
+      "last_accuracy_test": "2025-06-21T12:50:51.691136",
+      "last_consistency_test": "2025-06-21T12:50:51.691137",
+      "accuracy_score": 1.0,
+      "consistency_rate": 0.0,
+      "needs_work": true
+    },
+    "Crown Lengthening": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691144",
+      "last_consistency_test": "2025-06-21T12:50:51.691144",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Nitrous Oxide Sedation": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691152",
+      "last_consistency_test": "2025-06-21T12:50:51.691152",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Interim Partial Denture": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691160",
+      "last_consistency_test": "2025-06-21T12:50:51.691160",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Flap Surgery - One to Three Teeth": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691167",
+      "last_consistency_test": "2025-06-21T12:50:51.691168",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Custom Abutment with Implant Crown": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691176",
+      "last_consistency_test": "2025-06-21T12:50:51.691176",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Full Mouth X-rays": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691183",
+      "last_consistency_test": "2025-06-21T12:50:51.691184",
+      "accuracy_score": 0.5,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Frenulectomy": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691191",
+      "last_consistency_test": "2025-06-21T12:50:51.691192",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Pulpotomy on Primary Molar": {
+      "accuracy_passed": false,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691199",
+      "last_consistency_test": "2025-06-21T12:50:51.691200",
+      "accuracy_score": 0.0,
+      "consistency_rate": 1.0,
+      "needs_work": true
+    },
+    "Re-cement Bridge": {
+      "accuracy_passed": false,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691207",
+      "last_consistency_test": "2025-06-21T12:50:51.691208",
+      "accuracy_score": 0.0,
+      "consistency_rate": 1.0,
+      "needs_work": true
+    },
+    "Space Maintainer Delivery": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691215",
+      "last_consistency_test": "2025-06-21T12:50:51.691216",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Complete Oral Evaluation for New Patient": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691223",
+      "last_consistency_test": "2025-06-21T12:50:51.691224",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Topical Anesthesia with Debridement": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691231",
+      "last_consistency_test": "2025-06-21T12:50:51.691232",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Porcelain Crown on Posterior Tooth": {
+      "accuracy_passed": false,
+      "consistency_passed": false,
+      "last_accuracy_test": "2025-06-21T12:50:51.691239",
+      "last_consistency_test": "2025-06-21T12:50:51.691239",
+      "accuracy_score": 0.0,
+      "consistency_rate": 0.0,
+      "needs_work": true
+    },
+    "Pulpectomy on Primary Tooth": {
+      "accuracy_passed": false,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691246",
+      "last_consistency_test": "2025-06-21T12:50:51.691247",
+      "accuracy_score": 0.0,
+      "consistency_rate": 1.0,
+      "needs_work": true
+    },
+    "Re-cement Crown": {
+      "accuracy_passed": false,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691254",
+      "last_consistency_test": "2025-06-21T12:50:51.691255",
+      "accuracy_score": 0.0,
+      "consistency_rate": 1.0,
+      "needs_work": true
+    },
+    "Apicoectomy with Root End Filling": {
+      "accuracy_passed": true,
+      "consistency_passed": false,
+      "last_accuracy_test": "2025-06-21T12:50:51.691263",
+      "last_consistency_test": "2025-06-21T12:50:51.691263",
+      "accuracy_score": 1.0,
+      "consistency_rate": 0.0,
+      "needs_work": true
+    },
+    "Tooth Desensitization": {
+      "accuracy_passed": true,
+      "consistency_passed": true,
+      "last_accuracy_test": "2025-06-21T12:50:51.691270",
+      "last_consistency_test": "2025-06-21T12:50:51.691271",
+      "accuracy_score": 1.0,
+      "consistency_rate": 1.0,
+      "needs_work": false
+    },
+    "Occlusal Adjustment Post-Treatment": {
+      "accuracy_passed": true,
+      "consistency_passed": false,
+      "last_accuracy_test": "2025-06-21T12:50:51.691278",
+      "last_consistency_test": "2025-06-21T12:50:51.691279",
+      "accuracy_score": 1.0,
+      "consistency_rate": 0.0,
+      "needs_work": true
+    }
+  },
+  "summary": {
+    "total_cases": 36,
+    "accuracy_passed": 27,
+    "consistency_passed": 28,
+    "both_passed": 20,
+    "needs_work": 16
+  }
+}
